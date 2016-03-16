@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TestViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Init and configure window
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // Create first view controller
+    TestViewController *welcomeViewController = [[TestViewController alloc] init];
+    
+    // Add the view controller to a nav controller so that we can push view controller in the future
+    UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+    
+    // Set as root view controller for window
+    self.window.rootViewController = rootViewController;
+    
+    // Make the window visible
+    [self.window makeKeyAndVisible];
+    
     // Override point for customization after application launch.
     return YES;
 }
